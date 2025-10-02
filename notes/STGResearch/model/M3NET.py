@@ -147,16 +147,12 @@ class M3Net(nn.Module):
                 (t_i_d_data[:, -1, :] * self.time_of_day_size).type(torch.LongTensor)
             ]
             temp_emb.append(time_of_day_emb)
-        else:
-            time_of_day_emb = None
         if self.if_day_of_week:
             d_i_w_data = input_data[..., 2]  # (B, T, N)
             day_of_week_emb = self.day_of_week_emb[
                 (d_i_w_data[:, -1, :]).type(torch.LongTensor)
             ]
             temp_emb.append(day_of_week_emb)
-        else:
-            day_of_week_emb = None
         # 2. spatial embeddings
         node_emb = []
         if self.if_spatial:
