@@ -158,9 +158,9 @@ class M3Net(nn.Module):
         if self.if_spatial:
             node_emb.append(self.node_emb.unsqueeze(0).expand(batch_size, -1, -1))
         # 3. feature embeddings
-        input_data = input_data.transpose(1, 2).contiguous()
-        input_data = input_data.view(batch_size, num_nodes, -1)
-        time_series_emb = self.feature_emb_layer(input_data)
+        x = x.transpose(1, 2).contiguous()
+        x = x.view(batch_size, num_nodes, -1)
+        time_series_emb = self.feature_emb_layer(x)
 
         # concate all embeddings
         hidden = torch.cat([time_series_emb] + node_emb + temp_emb, dim=-1)  # (batch_size, num_nodes, hidden_dim)
