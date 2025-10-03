@@ -62,7 +62,7 @@ class MLPMixerBlock(nn.Module):
     def forward(self, x, adj):
         """
             x shape: (B, num_nodes, hidden_dim)
-            adj shape: (num_nodes, num_group) -> Adaptive Grouping Matrix Generator
+            adj shape: (num_nodes, num_group) -> Adaptive Grouping Matrix
         """
         # Spatial MLP
         origin_input = x
