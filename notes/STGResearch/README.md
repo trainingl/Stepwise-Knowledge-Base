@@ -13,16 +13,16 @@
    [5] 2025_TITS_A Lightweight Spatio-Temporal Neural Network with Sampling-based Time Series Decomposition for Traffic Forecasting
    
 2. **RNN-Based Methods**:
+
+   [1] 2022_VLDB_Decoupled Dynamic Spatial-Temporal Graph Neural Network for Traffic Forecasting
    
-   [1] **2023_AAAI_Spatial-temporal meta-graph learning for traffic forecasting**
+   [2] **2023_AAAI_Spatial-temporal meta-graph learning for traffic forecasting**
    
-   [2] 2023_TKDD_Dynamic graph convolutional recurrent network for traffic prediction: Benchmark and solution
+   [3] 2023_TKDD_Dynamic graph convolutional recurrent network for traffic prediction: Benchmark and solution
    
-   [3] 2024_KDD_Heterogeneity-informed meta-parameter learning for spatiotemporal time series forecasting
+   [4] 2024_KDD_Heterogeneity-informed meta-parameter learning for spatiotemporal time series forecasting
    
-   [4] **2023_PR_A Decomposition Dynamic graph convolutional recurrent network for traffic forecasting**
-   
-   [5] 2025_TITS_Pattern-Matching Dynamic Memory Network for Dual-Mode Traffic Prediction
+   [5] **2023_PR_A Decomposition Dynamic graph convolutional recurrent network for traffic forecasting**
    
 3. **Attention-Based Methods**:
    ...
