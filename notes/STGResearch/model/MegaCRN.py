@@ -101,7 +101,7 @@ class ADCRNN_Encoder(nn.Module):
         init_states = []
         for i in range(self.num_layers):
             init_states.append(self.dcrnn_cells[i].init_hidden_state(batch_size))
-        return init_states
+        return torch.stack(init_states, dim=0)
 
 
 class ADCRNN_Decoder(nn.Module):
