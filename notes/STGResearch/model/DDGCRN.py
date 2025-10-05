@@ -38,8 +38,8 @@ class DGCN(nn.Module):
         x_g2 = torch.einsum("bnm,bmc->bnc", supports2, x)
         x_g = torch.stack([x_g1, x_g2], dim=1)   
         x_g = x_g.permute(0, 2, 1, 3)     # (B, 2, N, input_dim) ->  (B, N, 2, input_dim)
-        weights = torch.einsum("nd,dkio->nkio", st_embeddings[1], self.weights_pool)
-        bias = torch.matmul(st_embeddings[1], self.bias_pool)
+        weights = torch.einsum("nd,dkio->nkio", st_embeddings[1], self.weights_pool)  # (B, 2, input_dim, output_dim)
+        bias = torch.matmul(st_embeddings[1], self.bias_pool)  # (N, output_dim)
         x_gconv = torch.einsum("bnki,nkio->bno", x_g, weights) + bias
         return x_gconv
 
@@ -96,7 +96,7 @@ class DGCRM(nn.Module):
         self.num_layers = num_layers
         self.DGCRM_cells = nn.ModuleList()
         self.DGCRM_cells.append(DDGCRNCell(num_nodes, self.input_dim, self.hidden_dim, cheb_k, embed_dim))
-        for _ in range(2, self.num_layers):
+        for _ in range(1, self.num_layers):
             self.DGCRM_cells.append(DDGCRNCell(num_nodes, self.hidden_dim, self.hidden_dim, cheb_k, embed_dim))
 
     def forward(self, x, init_state, st_embeddings):

@@ -20,7 +20,7 @@
    
    [3] 2023_TKDD_Dynamic graph convolutional recurrent network for traffic prediction: Benchmark and solution
    
-   [4] 2024_KDD_Heterogeneity-informed meta-parameter learning for spatiotemporal time series forecasting
+   [4] **2024_KDD_Heterogeneity-informed meta-parameter learning for spatiotemporal time series forecasting**
    
    [5] **2023_PR_A Decomposition Dynamic graph convolutional recurrent network for traffic forecasting**
    
