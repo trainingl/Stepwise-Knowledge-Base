@@ -20,9 +20,13 @@
    
    [3] 2023_TKDD_Dynamic graph convolutional recurrent network for traffic prediction: Benchmark and solution
    
-   [4] **2024_KDD_Heterogeneity-informed meta-parameter learning for spatiotemporal time series forecasting**
+   [4] **2023_PR_A Decomposition Dynamic graph convolutional recurrent network for traffic forecasting**
    
-   [5] **2023_PR_A Decomposition Dynamic graph convolutional recurrent network for traffic forecasting**
-   
+   [5] **2024_KDD_Heterogeneity-informed meta-parameter learning for spatiotemporal time series forecasting**
+
 3. **Attention-Based Methods**:
-   ...
+   [1] 2022_TKDE_Learning Dynamics and Heterogeneity of Spatial-Temporal Graph Data for Traffic Forecasting
+
+   [2] 2023_AAAI_PDFormer: Propagation Delay-aware Dynamic Long-range Transformer for Traffic Flow Prediction
+
+   [3] 2023_CIKM_STAEformer: Spatio-Temporal Adaptive Embedding Makes Vanilla Transformer SOTA for Traffic Forecasting
