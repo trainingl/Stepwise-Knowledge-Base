@@ -195,7 +195,7 @@ class STEMLP(nn.Module):
     
     
 if __name__ == '__main__':
-    adj_mx = load_pickle("./data/adj_PEMS08.pkl")
+    adj_mx = load_pickle("./datasets/adj_PEMS08.pkl")
     model = STEMLP(
         num_nodes=170, 
         input_dim=3, 

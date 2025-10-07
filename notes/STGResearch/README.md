@@ -40,7 +40,7 @@
 
    *[7] 2024_Linear Attention is Enough in Spatial-Temporal Forecasting
 
-4. Masked Pre-Training And Large Language Model:
+4. **Masked Pre-Training And Other Tricks**:
 
    [1] 2022_KDD_Pre-training Enhanced Spatial-temporal Graph Neural Network for Multivariate Time Series Forecasting
 
