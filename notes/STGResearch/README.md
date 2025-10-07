@@ -36,9 +36,11 @@
 
    [5] 2024_VLDB_BigST: Linear Complexity Spatio-Temporal Graph Neural Network for Traffic Forecasting on Large-Scale Road Networks
 
-   *[6] 2024_STGformer: Efficient Spatiotemporal Graph Transformer for Traffic Forecasting
+   [6] 2024_ESWA_An efficient spatial-temporal transformer with temporal aggregation and spatial memory for traffic forecasting
 
-   *[7] 2024_Linear Attention is Enough in Spatial-Temporal Forecasting
+   [7] 2024_STGformer: Efficient Spatiotemporal Graph Transformer for Traffic Forecasting
+
+   [8] 2024_Linear Attention is Enough in Spatial-Temporal Forecasting
 
 4. **Masked Pre-Training And Other Tricks**:
 
@@ -56,6 +58,8 @@
 
    [7] 2023_AAAI_Spatio-Temporal Self-Supervised Learning for Traffic Flow Prediction
 
-   [8] 2024_ICLR_TESTAM: A Time-Enhanced Spatio-Temporal Attention Model with Mixture of Experts
+   [8] 2025_NIPS_How Different from the Past? Spatio-Temporal Time Series Forecasting with Self-Supervised Deviation Learning
 
-   *[9] 2024_Navigating Spatio-Temporal Heterogeneity: A Graph Transformer Approach for Traffic Forecasting
+   [9] 2024_ICLR_TESTAM: A Time-Enhanced Spatio-Temporal Attention Model with Mixture of Experts
+
+   [10] 2024_Navigating Spatio-Temporal Heterogeneity: A Graph Transformer Approach for Traffic Forecasting
