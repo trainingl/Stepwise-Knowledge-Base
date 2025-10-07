@@ -32,9 +32,15 @@
 
    [3] 2023_CIKM_STAEformer: Spatio-Temporal Adaptive Embedding Makes Vanilla Transformer SOTA for Traffic Forecasting
 
-   [4] 2024_STGformer: Efficient Spatiotemporal Graph Transformer for Traffic Forecasting
+   [4] 2023_ECML PKDD_Efficient Adaptive Spatial-Temporal Attention Network for Traffic Flow Forecasting
 
-4. Masked Pre-Training And Other Tricks:
+   [5] 2024_VLDB_BigST: Linear Complexity Spatio-Temporal Graph Neural Network for Traffic Forecasting on Large-Scale Road Networks
+
+   *[6] 2024_STGformer: Efficient Spatiotemporal Graph Transformer for Traffic Forecasting
+
+   *[7] 2024_Linear Attention is Enough in Spatial-Temporal Forecasting
+
+4. Masked Pre-Training And Large Language Model:
 
    [1] 2022_KDD_Pre-training Enhanced Spatial-temporal Graph Neural Network for Multivariate Time Series Forecasting
 
@@ -42,8 +48,14 @@
 
    [3] 2024_IJCAI_Spatial-Temporal-Decoupled Masked Pre-training for Spatiotemporal Forecasting
 
-   [4] 2024_MDM_Spatial-Temporal Large Language Model for Traffic Prediction
+   [4] 2025_AAAI_STD-PLM: Understanding Both Spatial and Temporal Properties of Spatial-Temporal Data with PLM
 
-   [5] 2025_TKDE_ST-LLM+: Graph Enhanced Spatio-Temporal Large Language Models for Traffic Prediction
+   [5] 2024_MDM_Spatial-Temporal Large Language Model for Traffic Prediction
 
-   [6] 2024_ICLR_TESTAM: A Time-Enhanced Spatio-Temporal Attention Model with Mixture of Experts
+   [6] 2025_TKDE_ST-LLM+: Graph Enhanced Spatio-Temporal Large Language Models for Traffic Prediction
+
+   [7] 2023_AAAI_Spatio-Temporal Self-Supervised Learning for Traffic Flow Prediction
+
+   [8] 2024_ICLR_TESTAM: A Time-Enhanced Spatio-Temporal Attention Model with Mixture of Experts
+
+   *[9] 2024_Navigating Spatio-Temporal Heterogeneity: A Graph Transformer Approach for Traffic Forecasting
