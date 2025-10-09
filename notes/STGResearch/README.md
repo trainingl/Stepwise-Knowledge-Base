@@ -34,13 +34,17 @@
 
    [4] 2023_ECML PKDD_Efficient Adaptive Spatial-Temporal Attention Network for Traffic Flow Forecasting
 
-   [5] 2024_VLDB_BigST: Linear Complexity Spatio-Temporal Graph Neural Network for Traffic Forecasting on Large-Scale Road Networks
+   [5] 2023_ICDE_When Spatio-Temporal Meet Wavelets: Disentangled Traffic Forecasting via Efficient Spectral Graph Attention Networks
 
-   [6] 2024_ESWA_An efficient spatial-temporal transformer with temporal aggregation and spatial memory for traffic forecasting
+   [6] 2024_VLDB_BigST: Linear Complexity Spatio-Temporal Graph Neural Network for Traffic Forecasting on Large-Scale Road Networks
 
-   [7] 2024_STGformer: Efficient Spatiotemporal Graph Transformer for Traffic Forecasting
+   [7] 2024_ESWA_An efficient spatial-temporal transformer with temporal aggregation and spatial memory for traffic forecasting
 
-   [8] 2024_Linear Attention is Enough in Spatial-Temporal Forecasting
+   [8] 2024_STGformer: Efficient Spatiotemporal Graph Transformer for Traffic Forecasting
+
+   [9] 2024_Linear Attention is Enough in Spatial-Temporal Forecasting
+
+   [10] 2024_Navigating Spatio-Temporal Heterogeneity: A Graph Transformer Approach for Traffic Forecasting
 
 4. **Masked Pre-Training And Other Tricks**:
 
@@ -50,16 +54,16 @@
 
    [3] 2024_IJCAI_Spatial-Temporal-Decoupled Masked Pre-training for Spatiotemporal Forecasting
 
-   [4] 2025_AAAI_STD-PLM: Understanding Both Spatial and Temporal Properties of Spatial-Temporal Data with PLM
+   [4] 2024_CIKM_Revealing the Power of Masked Autoencoders in Traffic Forecasting
 
-   [5] 2024_MDM_Spatial-Temporal Large Language Model for Traffic Prediction
+   [5] 2025_AAAI_STD-PLM: Understanding Both Spatial and Temporal Properties of Spatial-Temporal Data with PLM
 
-   [6] 2025_TKDE_ST-LLM+: Graph Enhanced Spatio-Temporal Large Language Models for Traffic Prediction
+   [6] 2024_MDM_Spatial-Temporal Large Language Model for Traffic Prediction
 
-   [7] 2023_AAAI_Spatio-Temporal Self-Supervised Learning for Traffic Flow Prediction
+   [7] 2025_TKDE_ST-LLM+: Graph Enhanced Spatio-Temporal Large Language Models for Traffic Prediction
 
-   [8] 2025_NIPS_How Different from the Past? Spatio-Temporal Time Series Forecasting with Self-Supervised Deviation Learning
+   [8] 2023_AAAI_Spatio-Temporal Self-Supervised Learning for Traffic Flow Prediction
 
-   [9] 2024_ICLR_TESTAM: A Time-Enhanced Spatio-Temporal Attention Model with Mixture of Experts
+   [9] 2025_NIPS_How Different from the Past? Spatio-Temporal Time Series Forecasting with Self-Supervised Deviation Learning
 
-   [10] 2024_Navigating Spatio-Temporal Heterogeneity: A Graph Transformer Approach for Traffic Forecasting
+   [10] 2024_ICLR_TESTAM: A Time-Enhanced Spatio-Temporal Attention Model with Mixture of Experts
