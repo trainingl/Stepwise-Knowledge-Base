@@ -67,3 +67,7 @@
    [9] 2025_NIPS_How Different from the Past? Spatio-Temporal Time Series Forecasting with Self-Supervised Deviation Learning
 
    [10] 2024_ICLR_TESTAM: A Time-Enhanced Spatio-Temporal Attention Model with Mixture of Experts
+
+   [11] 2023_ICDE_Dynamic hypergraph structure learning for traffic flow forecasting
+
+   [12] 2024_NIPS_Ada-MSHyper: Adaptive Multi-Scale Hypergraph Transformer for Time Series Forecasting
