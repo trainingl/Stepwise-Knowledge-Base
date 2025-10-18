@@ -17,11 +17,11 @@
 | **架构认证**     | 6. 软考高项—系统架构设计师考试              | 职业认证 - 企业级系统架构设计方法论                          |
 
 
-## 🔬 二、前沿研究专项（论文+代码复现）
+## 🔬 二、前沿专项研究（论文+代码复现）
 
 | 研究领域     | 资源链接                                                     | 关键技术目标                         | 业务场景映射         |
 | ------------ | ------------------------------------------------------------ | ------------------------------------ | -------------------- |
-| **时空预测** | [Awesome-Spatio-Temporal-Foundation-Models](https://github.com/LMissher/Awesome-Spatio-Temporal-Foundation-Models) | POI/交通量/轨迹预测的Transformer应用 | 智慧城市交通调度系统 |
+| **时空预测** | [时空基座模型](https://github.com/LMissher/Awesome-Spatio-Temporal-Foundation-Models) | POI/交通量/轨迹预测的Transformer应用 | 智慧城市交通调度系统 |
 | **时序分析** | [时间序列预测框架](https://github.com/ACAT-SCUT/TQNet)      | 多变量时序的因果推理/插值/预测建模             | 电力负荷/金融股票预测系统     |
 | **推荐系统** | [推荐系统算法实战](https://github.com/datawhalechina/torch-rechub)     | 点击率预测/序列推荐/多任务推荐             | 产品业务推荐算法引擎 |
 | **金融风控** | [金融欺诈检测实战](https://github.com/AI4Risk/antifraud)     | 图神经网络反欺诈模型构建             | 金融实时交易监控平台 |

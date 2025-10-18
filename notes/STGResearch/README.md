@@ -22,7 +22,7 @@
 
 **[4] 2024_KDD_Heterogeneity-informed meta-parameter learning for spatiotemporal time series forecasting**
 
-[5] 2025_Neural Networks_PDG2Seq: Periodic Dynamic Graph to Sequence Model for Traffic Flow Prediction
+**[5] 2025_Neural Networks_PDG2Seq: Periodic Dynamic Graph to Sequence Model for Traffic Flow Prediction**
 
 ## **Attention-Based Methods**:
 
