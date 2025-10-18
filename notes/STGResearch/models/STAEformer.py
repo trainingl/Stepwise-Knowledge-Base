@@ -162,7 +162,7 @@ class STAEformer(nn.Module):
             # (batch_size, in_steps, num_nodes, tod_embedding_dim)
             features_list.append(tod_emb)
         if self.dow_embedding_dim > 0:
-            dow_emb = self.dow_embeddings(dow.type(torch.LongTensor))    
+            dow_emb = self.dow_embeddings(dow.long())    
             # (batch_size, in_steps, num_nodes, dow_embedding_dim)
             features_list.append(dow_emb)
         if self.spatial_embedding_dim > 0:
