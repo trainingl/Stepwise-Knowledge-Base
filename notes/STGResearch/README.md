@@ -30,7 +30,7 @@
 
 [2] 2023_AAAI_PDFormer: Propagation Delay-aware Dynamic Long-range Transformer for Traffic Flow Prediction
 
-[3] 2023_CIKM_STAEformer: Spatio-Temporal Adaptive Embedding Makes Vanilla Transformer SOTA for Traffic Forecasting
+**[3] 2023_CIKM_STAEformer: Spatio-Temporal Adaptive Embedding Makes Vanilla Transformer SOTA for Traffic Forecasting**
 
 [4] 2023_ECML PKDD_Efficient Adaptive Spatial-Temporal Attention Network for Traffic Flow Forecasting
 

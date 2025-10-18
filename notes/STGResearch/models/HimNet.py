@@ -246,8 +246,8 @@ class HimNet(nn.Module):
         """
         tod = x[:, -1, 0, 1]
         dow = x[:, -1, 0, 2]
-        tod_emb = self.tod_embedding[(tod * 288).type(torch.LongTensor)]  # (B, tod_embedding_dim)
-        dow_emb = self.dow_embedding[dow.type(torch.LongTensor)]          # (B, dow_embedding_dim)
+        tod_emb = self.tod_embedding((tod * 288).long())  # (B, tod_embedding_dim)
+        dow_emb = self.dow_embedding(dow.long())          # (B, dow_embedding_dim)
         time_embedding = torch.cat([tod_emb, dow_emb], dim=-1)
         support = torch.softmax(
             torch.relu(self.node_embedding @ self.node_embedding.T), dim=-1
