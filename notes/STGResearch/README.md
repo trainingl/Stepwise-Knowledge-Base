@@ -10,7 +10,7 @@
 
 **[4] 2025_CIKM_M3-Net: A Cost-Effective Graph-Free MLP-Based Model for Traffic Prediction**
 
-[5] 2025_TITS_A Lightweight Spatio-Temporal Neural Network with Sampling-based Time Series Decomposition for Traffic Forecasting
+**[5] 2025_TITS_A Lightweight Spatio-Temporal Neural Network with Sampling-based Time Series Decomposition for Traffic Forecasting**
 
 ## **RNN-Based Methods**:
 
