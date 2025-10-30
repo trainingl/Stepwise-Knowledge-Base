@@ -1,6 +1,6 @@
 # 时空预测研究
 
-## **Pure MLP-Based Methods**:
+## **1.Pure MLP-Based Methods**:
 
 **[1] 2022_CIKM_Spatial-Temporal Identity: A Simple yet Effective Baseline for Multivariate Time Series Forecasting**
 
@@ -12,7 +12,7 @@
 
 **[5] 2025_TITS_A Lightweight Spatio-Temporal Neural Network with Sampling-based Time Series Decomposition for Traffic Forecasting**
 
-## **RNN-Based Methods**:
+## **2.RNN-Based Methods**:
 
 **[1] 2023_AAAI_Spatial-temporal meta-graph learning for traffic forecasting**
 
@@ -24,7 +24,7 @@
 
 **[5] 2025_Neural Networks_PDG2Seq: Periodic Dynamic Graph to Sequence Model for Traffic Flow Prediction**
 
-## **Attention-Based Methods**:
+## **3.Attention-Based Methods**:
 
 [1] 2022_TKDE_Learning Dynamics and Heterogeneity of Spatial-Temporal Graph Data for Traffic Forecasting
 
@@ -46,7 +46,7 @@
 
 [10] 2024_Linear Attention is Enough in Spatial-Temporal Forecasting
 
-## **Masked Pre-Training And Other Tricks**:
+## **4.Masked Pre-Training And Other Tricks**:
 
 [1] 2022_VLDB_Decoupled Dynamic Spatial-Temporal Graph Neural Network for Traffic Forecasting
 

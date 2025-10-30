@@ -164,7 +164,7 @@ class LSTNN(nn.Module):
         # prepare data
         input_data = x[..., range(self.input_dim)]
 
-        # 1. patching
+        # 1. padding
         input_len_pad = math.ceil(1.0 * self.input_len / self.stride) * self.stride - self.input_len
         if input_len_pad:
             input_data = torch.cat((input_data, input_data[:, -1:, :, :].expand(-1, input_len_pad, -1, -1)), dim=1)
@@ -179,7 +179,7 @@ class LSTNN(nn.Module):
         patch_out = self.patch_encoder(patch_input)
         downsample_out = self.downsample_encoder(downsample_input)
 
-        # residual
+        # 4. residual & add
         output = patch_out + downsample_out + self.residual(input_data)
         return output
 
