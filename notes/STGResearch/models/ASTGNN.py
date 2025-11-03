@@ -6,6 +6,29 @@ import math
 
 
 # 2022_TKDE_Learning Dynamics and Heterogeneity of Spatial-Temporal Graph Data for Traffic Forecasting
+class TemporalPositionalEncoding(nn.Module):
+    def __init__(self, d_model, dropout, max_len, lookup_index=None):
+        super(TemporalPositionalEncoding, self).__init__()
+        self.max_len = max_len
+        self.lookup_index = lookup_index
+        self.dropout = nn.Dropout(p=dropout)
+        pe = torch.zeros(max_len, d_model)
+        for pos in range(max_len):
+            for i in range(0, d_model, 2):
+                pe[pos, i] = math.sin(pos / (10000 ** ((2 * i) / d_model)))
+                pe[pos, i+1] = math.cos(pos (10000 ** ((2 * (i + 1)) / d_model)))
+        pe = pe.unsqueeze(0).unsqueeze(0)   # (1, 1, max_len, d_model)
+        self.register_buffer('pe')
+
+    def forward(self, x):
+        # x shape: (B, N, T, d_model)
+        if self.lookup_index is not None:
+            x = x + self.pe[:, :, self.lookup_index, :]
+        else:
+            x = x + self.pe[:, :, :x.size(2), :]
+        return self.dropout(x.detach())
+    
+
 class GCN(nn.Module):
     def __init__(self, norm_adj, input_dim, output_dim):
         super(GCN, self).__init__()
@@ -462,12 +485,12 @@ class EncoderLayer(nn.Module):
         self.use_LayerNorm = use_LayerNorm
         if aware_temporal_context:  # employ temporal trend-aware attention
             self.temporal_attn = MultiHeadAttentionAwareTemporalContext_q1d_k1d(num_head, d_model, num_of_weeks, num_of_days, num_of_hours, points_per_hour, kernel_size, dropout)
-        else:         # employ traditional attention
+        else:                       # employ traditional self-attention
             self.temporal_attn = MultiHeadAttention(num_head, d_model, dropout)
         
-        if scaledSAt: # employ spatial attention
+        if scaledSAt:               # employ spatial attention
             self.position_wise_gcn = PositionWiseSpatialAttention(norm_adj, d_model, d_model, dropout)
-        else:
+        else:                       # employ traditional graph convolutional network
             self.position_wise_gcn = PositionWiseSpatialGCN(norm_adj, d_model, d_model, dropout)
 
         if residual_connection or use_LayerNorm:
@@ -494,13 +517,13 @@ class DecoderLayer(nn.Module):
         if aware_temporal_context:  # employ temporal trend-aware attention
             self.temporal_attn1 = MultiHeadAttentionAwareTemporalContext_qc_kc(num_head, d_model, num_of_weeks, num_of_days, num_of_hours, points_per_hour, kernel_size, dropout)
             self.temporal_attn2 = MultiHeadAttentionAwareTemporalContext_qc_k1d(num_head, d_model, num_of_weeks, num_of_days, num_of_hours, points_per_hour, kernel_size, dropout)
-        else:         # employ traditional attention
+        else:                       # employ traditional self-attention
             self.temporal_attn1 = MultiHeadAttention(num_head, d_model, dropout)
             self.temporal_attn2 = MultiHeadAttention(num_head, d_model, dropout)
         
-        if scaledSAt: # employ spatial attention
+        if scaledSAt:               # employ spatial attention
             self.position_wise_gcn = PositionWiseSpatialAttention(norm_adj, d_model, d_model, dropout)
-        else:
+        else:                       # employ traditional graph convolutional network
             self.position_wise_gcn = PositionWiseSpatialGCN(norm_adj, d_model, d_model, dropout)
 
         if residual_connection or use_LayerNorm:
@@ -511,7 +534,7 @@ class DecoderLayer(nn.Module):
     def forward(self, x, memory):
         """
             x shape: (B, N, T', d_model)
-            memory shape: (B, N, T, d_model)
+            memory shape: (B, N, T, d_model), the outpouts of encoder
         """
         m = memory
         attn_shape = (1, x.size(-2), x.size(-2))
@@ -540,7 +563,7 @@ class ASTGNN(nn.Module):
                  num_of_days, 
                  num_of_hours, 
                  points_per_hour, 
-                 num_for_predict, 
+                 num_for_predict=12, 
                  dropout=.0, 
                  aware_temporal_context=True,
                  scaledSAt=True, 
@@ -555,30 +578,57 @@ class ASTGNN(nn.Module):
         self.norm_adj = self.norm_Adj(adj_mx)
         # encoder temporal position embedding
         max_len = max(num_of_weeks * 7 * 24 * num_for_predict, num_of_days * 24 * num_for_predict, num_of_hours * num_for_predict)
+        w_index = self.search_index(max_len, num_of_weeks, num_for_predict, points_per_hour, 7 * 24)
+        d_index = self.search_index(max_len, num_of_days, num_for_predict, points_per_hour, 24)
+        h_index = self.search_index(max_len, num_of_hours, num_for_predict, points_per_hour, 1)
+        en_lookup_index = w_index + d_index + h_index
+
+        print('TemporalPositionalEncoding max length: ', max_len)
+        print('w_index: ', w_index)
+        print('d_index: ', d_index)
+        print('h_index: ', h_index)
+        print('en_lookup_index: ', en_lookup_index)
 
         if SE and TE:
-            pass
+            encode_temporal_position = TemporalPositionalEncoding(d_model, dropout, max_len, en_lookup_index)  # decoder temporal position embedding
+            decode_temporal_position = TemporalPositionalEncoding(d_model, dropout, num_for_predict)
+            encode_spatial_position = SpatialPositionalEncoding(d_model, num_nodes, self.norm_adj, dropout, gcn_num_layers)
+            decode_spatial_position = SpatialPositionalEncoding(d_model, num_nodes, self.norm_adj, dropout, gcn_num_layers)
+            self.encoder_embedding = nn.Sequential(
+                nn.Linear(input_dim, d_model),
+                encode_temporal_position,
+                encode_spatial_position
+            )
+            self.decoder_embedding = nn.Sequential(
+                nn.Linear(output_dim, d_model),
+                decode_temporal_position,
+                decode_spatial_position
+            )
         elif SE and (not TE):
-            spatial_position = SpatialPositionalEncoding(d_model, num_nodes, self.norm_adj, dropout, gcn_num_layers)
-            self.encoder_embedding = nn.Sequential(nn.Linear(input_dim, d_model), copy.deepcopy(spatial_position))
-            self.decoder_embedding = nn.Sequential(nn.Linear(output_dim, d_model), copy.deepcopy(spatial_position))
+            encode_spatial_position = SpatialPositionalEncoding(d_model, num_nodes, self.norm_adj, dropout, gcn_num_layers)
+            decode_spatial_position = SpatialPositionalEncoding(d_model, num_nodes, self.norm_adj, dropout, gcn_num_layers)
+            self.encoder_embedding = nn.Sequential(nn.Linear(input_dim, d_model), encode_spatial_position)
+            self.decoder_embedding = nn.Sequential(nn.Linear(output_dim, d_model), decode_spatial_position)
         elif (not SE) and TE:
-            pass
+            encode_temporal_position = TemporalPositionalEncoding(d_model, dropout, max_len, en_lookup_index)  # decoder temporal position embedding
+            decode_temporal_position = TemporalPositionalEncoding(d_model, dropout, num_for_predict)
+            self.encoder_embedding = nn.Sequential(nn.Linear(input_dim, d_model), encode_temporal_position)
+            self.decoder_embedding = nn.Sequential(nn.Linear(output_dim, d_model), decode_temporal_position)
         else:
             self.encoder_embedding = nn.Sequential(nn.Linear(input_dim, d_model))
             self.decoder_embedding = nn.Sequential(nn.Linear(output_dim, d_model))
 
         self.encoder = nn.ModuleList(
             [
-                EncoderLayer(num_head, d_model, self.norm_adj, num_of_weeks, num_of_days, num_of_hours, points_per_hour, kernel_size, 
-                dropout, aware_temporal_context, scaledSAt, residual_connection, use_LayerNorm)
+                EncoderLayer(num_head, d_model, self.norm_adj, num_of_weeks, num_of_days, num_of_hours, points_per_hour, 
+                             kernel_size, dropout, aware_temporal_context, scaledSAt, residual_connection, use_LayerNorm)
                 for _ in range(num_layers)
             ]
         )
         self.decoder = nn.ModuleList(
             [
-                DecoderLayer(num_head, d_model, self.norm_adj, num_of_weeks, num_of_days, num_of_hours, points_per_hour, kernel_size, 
-                dropout, aware_temporal_context, scaledSAt, residual_connection, use_LayerNorm)
+                DecoderLayer(num_head, d_model, self.norm_adj, num_of_weeks, num_of_days, num_of_hours, points_per_hour, 
+                             kernel_size, dropout, aware_temporal_context, scaledSAt, residual_connection, use_LayerNorm)
                 for _ in range(num_layers)
             ]
         )
@@ -596,6 +646,16 @@ class ASTGNN(nn.Module):
         W = W + torch.eye(N, device=W.device, dtype=W.dtype)
         D = torch.diag(1.0 / torch.sum(W, dim=1))
         return torch.mm(D, W)
+    
+    def search_index(self, max_len, num_of_depend, num_for_predict, points_per_hour, units):
+        # units: int, weekly: 7 * 24, daily: 24, recent(hour): 1
+        x_idx = []
+        for i in range(1, num_of_depend + 1):
+            start_idx = max_len - points_per_hour * units * i
+            for j in range(num_for_predict):
+                end_idx = start_idx + j
+                x_idx.append(end_idx)
+        return x_idx
 
     def forward(self, src, trg):
         """
